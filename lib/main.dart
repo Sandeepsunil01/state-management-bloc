@@ -37,12 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "${BlocProvider.of<CounterCubit>(context, listen: true).state.counter}",
-          style: const TextStyle(fontSize: 52),
-        ),
-      ),
+      // body: Method1(),
+      body: Method2(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -64,5 +60,38 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+}
+
+// Simply changing listen to true we can see the update the data
+// It is calling setstate
+class Method1 extends StatelessWidget {
+  const Method1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        "${BlocProvider.of<CounterCubit>(context, listen: true).state.counter}",
+        style: const TextStyle(fontSize: 52),
+      ),
+    );
+  }
+}
+
+// We can use BlocBuilder in order to see the changes
+class Method2 extends StatelessWidget {
+  const Method2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CounterCubit, CounterState>(builder: (context, state) {
+      return Center(
+        child: Text(
+          "${state.counter}",
+          style: const TextStyle(fontSize: 52),
+        ),
+      );
+    });
   }
 }
