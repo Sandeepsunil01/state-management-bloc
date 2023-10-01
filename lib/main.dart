@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management_bloc/cubits/counter/counter_cubit.dart';
+import 'pages/bloc_consumer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,8 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Method1(),
-      body: Method2(),
+      // body: UsingSimpleListen(),
+      // body: BlocBuilderExample(),
+      // body: BlocBuilderExampleToSeeChanges(),
+      // body: BlocListenerExample(),
+      body: BlocConsumerExample(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -46,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               BlocProvider.of<CounterCubit>(context).increament();
             },
+            heroTag: "Increment-Tag",
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
@@ -54,44 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               BlocProvider.of<CounterCubit>(context).decrement();
             },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
+            heroTag: "Decrement-Tag",
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
           ),
         ],
       ),
     );
-  }
-}
-
-// Simply changing listen to true we can see the update the data
-// It is calling setstate
-class Method1 extends StatelessWidget {
-  const Method1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "${BlocProvider.of<CounterCubit>(context, listen: true).state.counter}",
-        style: const TextStyle(fontSize: 52),
-      ),
-    );
-  }
-}
-
-// We can use BlocBuilder in order to see the changes
-class Method2 extends StatelessWidget {
-  const Method2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CounterCubit, CounterState>(builder: (context, state) {
-      return Center(
-        child: Text(
-          "${state.counter}",
-          style: const TextStyle(fontSize: 52),
-        ),
-      );
-    });
   }
 }
