@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_bloc/change_theme/change_theme_main_page.dart';
+import 'communication_between_bloc_and_cubit/communication_between_bloc_and_cubit.dart';
 
 void main() {
   // This Runs Counter Cubit Code
@@ -7,5 +7,7 @@ void main() {
   // This Runs Counter Bloc Code
   // runApp(const CounterBlocApp());
   // In order to Pass Data down the Widget Tree
-  runApp(const ChangeThemeApp());
+  // runApp(const ChangeThemeApp());
+  // Communication between Bloc and Cubit
+  runApp(const CommunicationBetweenBlocAndCubit());
 }
