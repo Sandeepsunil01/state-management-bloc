@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management_bloc/bloc/counter/counter_bloc.dart';
-
-import 'pages/bloc_builder.dart';
-import 'pages/bloc_builder_to_listen_for_changes.dart';
-import 'pages/bloc_builders_with_listeners.dart';
 import 'pages/bloc_consumer.dart';
-import 'pages/extension_method.dart';
-import 'pages/using_simple_listener.dart';
 
 class CounterBlocApp extends StatelessWidget {
   const CounterBlocApp({super.key});
@@ -39,8 +33,8 @@ class CounterBlocHomePage extends StatelessWidget {
       // body: UsingSimpleListen(),
       // body: BlocBuilderWithBloc(),
       // body: BlocBuilderToChangeInState(),
-      body: BlocBuilderWithListeners(),
-      // body: BlocConsumerExample(),
+      // body: BlocBuilderWithListeners(),
+      body: BlocConsumerExample(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
