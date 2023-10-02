@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management_bloc/communication_between_bloc_and_cubit/cubits/color/color_cubit.dart';
-
+import '../color/color_cubit.dart';
 part 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {

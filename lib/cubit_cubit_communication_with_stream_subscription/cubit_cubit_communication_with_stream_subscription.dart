@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management_bloc/communication_between_bloc_and_cubit/cubits/color/color_cubit.dart';
-import 'package:state_management_bloc/communication_between_bloc_and_cubit/cubits/counter/counter_cubit.dart';
+import 'package:state_management_bloc/cubit_cubit_communication_with_stream_subscription/cubits/color/color_cubit.dart';
+import 'package:state_management_bloc/cubit_cubit_communication_with_stream_subscription/cubits/counter/counter_cubit.dart';
 
-class CommunicationBetweenBlocAndCubit extends StatelessWidget {
-  const CommunicationBetweenBlocAndCubit({super.key});
+class CubitToCubitCommunicationWithStreamSubscription extends StatelessWidget {
+  const CubitToCubitCommunicationWithStreamSubscription({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +35,18 @@ class CommunicationBetweenBlocAndCubit extends StatelessWidget {
                 CounterCubit(colorCubit: context.read<ColorCubit>()))
       ],
       child: MaterialApp(
-        title: "Bloc & Cubit",
+        title: "Cubit Cubit Stream",
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(useMaterial3: true),
-        home: const BlocAndCubitPage(),
+        home: const CubitToCubitCommunicationWithStreamSubscriptionPage(),
       ),
     );
   }
 }
 
-class BlocAndCubitPage extends StatelessWidget {
-  const BlocAndCubitPage({super.key});
+class CubitToCubitCommunicationWithStreamSubscriptionPage
+    extends StatelessWidget {
+  const CubitToCubitCommunicationWithStreamSubscriptionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class BlocAndCubitPage extends StatelessWidget {
           centerTitle: true,
           backgroundColor: context.watch<ColorCubit>().state.color,
           title: const Text(
-            "Bloc and Cubit Together",
+            "Cubit Cubit with StreamSubscription",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
