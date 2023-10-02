@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management_bloc/cubits/counter/counter_cubit.dart';
 
-import '../previous_page.dart';
+import '../../previous_page.dart';
 
 class BlocBuilderExampleToSeeChanges extends StatelessWidget {
   const BlocBuilderExampleToSeeChanges({super.key});
