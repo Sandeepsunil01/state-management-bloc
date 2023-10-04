@@ -43,7 +43,7 @@ class _BlocBlocWithStreamSubscriptionPageState
           centerTitle: true,
           backgroundColor: context.watch<ColorBloc>().state.color,
           title: const Text(
-            "Cubit Cubit with StreamSubscription",
+            "Bloc Bloc with StreamSubscription",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

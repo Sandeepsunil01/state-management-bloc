@@ -8,18 +8,18 @@ class BlocAccessContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CounterCubit>(
-      create: (context) => CounterCubit(),
-      child: MaterialApp(
-        title: "Bloc Access Context",
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(useMaterial3: true),
-        home: const BlocAccessContextPage(),
-      ),
+    return MaterialApp(
+      title: "Bloc Access Context",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: true),
+      home: const BlocAccessContextPage(),
     );
   }
 }
 
+// If you want to access the cubit inside a child widget there are 2 methods
+// 1. Use Child Widget
+// 2. Use builder widget
 class BlocAccessContextPage extends StatelessWidget {
   const BlocAccessContextPage({super.key});
 
@@ -29,7 +29,50 @@ class BlocAccessContextPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Bloc Access Context"),
       ),
-      body: Column(
+      // 1. Method one using extracting child widget
+      // body: BlocProvider<CounterCubit>(
+      //   create: (_) => CounterCubit(),
+      //   child: const ChildWidget(),
+      // ),
+
+      // 2. Using Builder Method
+      body: BlocProvider<CounterCubit>(
+        create: (_) => CounterCubit(),
+        child: Builder(
+          builder: (context) => Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${context.watch<CounterCubit>().state.counter}",
+                  style: const TextStyle(fontSize: 52),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<CounterCubit>().increment();
+                  },
+                  child: const Text(
+                    "Increment",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChildWidget extends StatelessWidget {
+  const ChildWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             "${context.watch<CounterCubit>().state.counter}",
@@ -40,8 +83,8 @@ class BlocAccessContextPage extends StatelessWidget {
               context.read<CounterCubit>().increment();
             },
             child: const Text(
-              "Increament",
-              style: TextStyle(fontSize: 12),
+              "Increment",
+              style: TextStyle(fontSize: 15),
             ),
           ),
         ],
