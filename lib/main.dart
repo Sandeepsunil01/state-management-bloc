@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'bloc_access_context/bloc_access_context.dart';
+import 'bloc_access_routes/bloc_access_anonymous_route/bloc_access_anonymous_route.dart';
 
 void main() {
   // This Runs Counter Cubit Code
@@ -25,5 +24,9 @@ void main() {
   // runApp(const BlocBlocWithBlocListerners());
 
   // Bloc Access Context
-  runApp(const BlocAccessContext());
+  // runApp(const BlocAccessContext());
+
+  // Bloc Access Routes
+  // Bloc Access Anonymous Routes Access
+  runApp(const BlocAccessAnonymousRoute());
 }
