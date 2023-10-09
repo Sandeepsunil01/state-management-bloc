@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bloc_access_routes/bloc_access_generated_routes/bloc_access_generated_route.dart';
 import 'bloc_access_routes/bloc_access_named_routes/bloc_access_named_route.dart';
 
 void main() {
@@ -31,5 +32,8 @@ void main() {
   // runApp(const BlocAccessAnonymousRoute());
 
   // Bloc Access Named Routes
-  runApp(const BlocAccessNamedRoute());
+  // runApp(const BlocAccessNamedRoute());
+
+  // Bloc Access Generated Routes
+  runApp(const BlocAccessGeneratedRoute());
 }
